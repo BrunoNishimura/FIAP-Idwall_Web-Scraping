@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Challenge.Idwall.Web.AspNet.Models.FugitiveModel>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width"/>
+    </head>
+    <title>Fugitivos</title>
+    <body>
+        <h1>Fugitivos</h1>
+        <p>
+            <a asp-controller="Fugitive" asp-action="Cadastrar">Novo Fugitivo</a>
+        </p>
+
+        <table class="table" border="1">
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Nascimento</th>
+                <th>Gênero</th>
+                <th></th>
+            </tr>
+       
+
+            @foreach(var item in Model){
+                <tr>
+                    <td>
+                        <label>@item.FugitiveId</label>
+                    </td>
+                    <td>
+                        <label>@item.FullName</label>
+                    </td>
+                    <td>
+                        <label>@item.BirthDay</label>
+                    </td>
+                    <td>
+                        <label>@item.Gender</label>
+                    </td>
+
+                    <td>
+                        <a asp-controller="Fugitive"
+                            asp-action="Editar"
+                            asp-route-id="@item.FugitiveId">Editar</a>
+                        <a asp-controller="Fugitive"
+                            asp-action="Consultar"
+                            asp-route-id="@item.FugitiveId">Consultar</a>
+                        <a asp-controller="Fugitive"
+                            asp-action="Excluir"
+                            asp-route-id="@item.FugitiveId">Excluir</a>
+                    </td>
+                </tr>
+            }
+         </table>
+    </body>
+</html>
